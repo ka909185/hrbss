@@ -47,3 +47,4 @@ gem 'faker'
 gem 'twitter-bootstrap-rails'
 gem 'ransack'
 gem 'devise'
+gem 'rails_12factor', group: :production
