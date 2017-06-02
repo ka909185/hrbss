@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@sikakus) do |f| %>
+  <% if @sikakus.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @sikakus.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @sikakus.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :社員資格等級 %>
+  <%= f.text_field :shikakuname %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<%= link_to "一覧画面にもどる", sikakus_path %>

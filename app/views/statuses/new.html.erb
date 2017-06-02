@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@statuses) do |f| %>
+  <% if @statuses.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @statuses.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @statuses.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :在職ステータス %>
+  <%= f.text_field :zaishoku %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<%= link_to "一覧画面にもどる", statuses_path %>

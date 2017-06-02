@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@koyous) do |f| %>
+  <%= f.label :雇用区分 %>
+  <%= f.text_field :koyoukubun %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<%= link_to "一覧画面にもどる", koyous_path %>

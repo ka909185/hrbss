@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+      <div class="row">
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@base) do |f| %>
+  <%= f.label :社員コード %>
+  <%= f.text_field :employeecode %>半角７桁
+  <br>
+  <%= f.label :氏名 %>
+  <%= f.text_field :name %>姓（半角スペース）名
+  <br>
+  <%= f.label :生年月日 %>
+  <%= f.text_field :birthday %>YYYY-MM-DD（半角）
+  <br>
+  <%= f.label :性別 %>
+  <%= f.select :sex, [["男", "man"], ["女", "woman"]] %>
+  <br>
+  <%= f.label :管一区分 %>
+  <%= f.select :kanichi, [["管理職", "kan"], ["一般職", "ichi"]] %>
+  <br>
+  <%= f.label :組合区分 %>
+  <%= f.select :kumiai, [["非組合員", "hikumi"], ["組合員", "kumi"]] %>
+  <br>
+  <%= f.label :再雇用 %>
+  <%= f.select :Saikoyo, [["No", "false"], ["Yes", "true"]] %>
+  <br>
+  <%= f.label :資格等級 %>
+  <%= f.collection_select :sikaku_id, Sikaku.all, :id, :shikakuname %>
+  <br>
+  <%= f.label :役職名 %>
+  <%= f.collection_select :yakushoku_id, Yakushoku.all, :id, :yakushokuname %>
+  <br>
+  <%= f.label :在籍状況 %>
+  <%= f.collection_select :status_id, Status.all, :id, :zaishoku %>
+  <br>
+  <%= f.label :雇用区分 %>
+  <%= f.collection_select :koyou_id, Koyou.all, :id, :koyoukubun %>
+  <br>
+  <%= f.label :所属組織 %>
+  <%= f.collection_select :organization_id, Organization.all, :id, :orgname %>
+  <br>
+  <%= f.label :任命日 %>
+  <%= f.text_field :ninmei_date %>YYYY-MM-DD（半角）
+  <br>
+  <%= f.submit %>
+<% end %>
+<%= link_to "一覧画面にもどる", bases_path %>
+</div>
+</div>
+</div>

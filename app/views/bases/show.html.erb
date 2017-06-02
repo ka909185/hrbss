@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+<%= @base.employeecode %>
+<H2><%= @base.name %></H2>
+<%= link_to "編集", edit_basis_path(@base), class: 'btn btn-default btn-sm btn-success' %>
+<%= link_to '削除', basis_path(@base), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %>
+<H4>-------社員基本情報---------------------------------------------------------------------------------</H4>
+<H6>情報変更日:<%= @base.updated_at.strftime("%Y/%m/%d %H:%M:%S") %></H6>
+<table class = "table table-hover" border="3">
+  <tr>
+    <th>年齢</th>
+    <td><%= @base.age %></td>
+    <th>性別</th>
+    <td><% if @base.sex == "man" %>
+      <span>男</span>
+      <% else %>
+      <span>女</span>
+      <% end %></td>
+    <th>役職</th>
+    <td><%= @base.yakushoku.yakushokuname %></td>
+  </tr>
+  <tr>
+    <th>在職状況</th>
+    <td><%= @base.status.zaishoku %></td>
+    <th>社員種別</th>
+    <td><%= @base.koyou.koyoukubun %></td>
+    <th>資格等級</th>
+    <td><%= @base.sikaku.shikakuname %></td>
+  </tr>
+  <tr>
+    <th>管一区分</th>
+    <td><% if @base.kanichi == "kan"%>
+      <span>管理職</span>
+      <% else %>
+      <span>一般職</span>
+      <% end %></td>
+    <th>組合区分</th>
+    <td><% if @base.kumiai == "hikumi"%>
+      <span>非組合員</span>
+      <% else %>
+      <span>組合員</span>
+      <% end %></td>
+    <th>再就職</th>
+    <td><% if @base.Saikoyo == false %>
+      <span>----</span>
+      <% else %>
+      <span>Y</span>
+      <% end %></td>
+  </tr>
+</table>
+<br>
+<H4>-------所属組織情報---------------------------------------------------------------------------------</H4>
+<table class = "table table-hover" border="3">
+  <tr>
+    <th>所属組織</th>
+    <td><%= @base.organization.orgname %></td>
+    <th>任命日</th>
+    <td><%= @base.ninmei_date.strftime("%Y/%m/%d") %></td>
+  </tr>
+  <tr>
+    <th>兼務先</th>
+    <td></td>
+    <th>任命日</th>
+    <td></td>
+  </tr>
+</table>
+<br>
+<H4>-------服務管理情報---------------------------------------------------------------------------------</H4>
+<table class = "table table-hover" border="3">
+  <tr>
+    <th>服務管理者</th>
+    <td><%= @workmanage.maneger.name %></td>
+    <th>基準日</th>
+    <td><%= @workmanage.start_date.strftime("%Y/%m/%d") %></td>
+  </tr>
+  <tr>
+    <th>代行承認者</th>
+    <td></td>
+    <th>基準日</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>管理対象メンバ</th>
+    <td></td>
+    <th>基準日</th>
+    <td></td>
+  </tr>
+</table>
+<p>変更履歴一覧</p>
+<div id="comments_area">
+
+</div>
+
+</div>
+</div>

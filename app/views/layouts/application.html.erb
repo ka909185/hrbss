@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HRBSS</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <ul class="navbar-right">
+      HR BussinessSupportSystem
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マスタメンテ <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "在籍状況テーブル", statuses_path %></li>
+          <li><%= link_to '雇用区分テーブル', koyous_path %></li>
+          <li><%= link_to "資格等級テーブル", sikakus_path %></li>
+          <li><%= link_to "役職名テーブル", yakushokus_path %></li>
+          <li><%= link_to "組織名テーブル", organizations_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to "社員一覧", bases_path %></li>
+      <li><%= link_to "上長部下紐付け", workmanages_path %></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">データ出力 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "本承認者取込フォーマットcsv出力", workmanages_path(format: :csv) %></li>
+          <li><%= link_to "代理権限者取込フォーマットcsv出力", bases_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to "通勤費管理", bases_path %></li>
+      <li><%= link_to "契約管理", bases_path %></li>
+      <li><%= link_to "MailingList管理", bases_path %></li>
+      <li><%= link_to "問合せ管理", bases_path %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "マイページ", edit_user_registration_path %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
+        <li><%= link_to "サインアップ", new_user_registration_path %></li>
+      <% end %>
+    </ul>
+
+  </header>
+
+<%= yield %>
+
+</body>
+</html>

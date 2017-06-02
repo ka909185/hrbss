@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
+    <h2>社員一覧</h2>
+      <%= link_to "新規登録", new_basis_path, class: 'btn btn-default' %>
+      <br><br>
+
+      <%= form_tag bases_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search],class: "form-control", placeholder: "名前" %>
+        <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
+      </p>
+      <% end %>
+
+      <div class="row">
+        <table class = "table table-hover">
+           <tr>
+             <th>社員番号</th>
+             <th>氏名</th>
+           </tr>
+          <% @bases.each do |t| %>
+           <tr>
+             <td><%= link_to basis_path(t) do %><%= t.employeecode %><% end %></td>
+             <td><%= t.name %></td>
+           </tr>
+          <% end %>
+        </table>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@base) do |f| %>
+  <% if @base.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @base.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @base.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+  <%= f.text_field :employeecode, autofocus: true, class: "form-control", placeholder: "社員コード(半角７桁)"  %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "姓名（姓名の間に半角スペース）"  %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.text_field :birthday, autofocus: true, class: "form-control", placeholder: "生年月日（YYYY-MM-DD（半角））"  %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :性別 %>
+  <%= f.select :sex, [["男", "man"], ["女", "woman"]] %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :管一区分 %>
+  <%= f.select :kanichi, [["管理職", "kan"], ["一般職", "ichi"]] %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :組合区分 %>
+  <%= f.select :kumiai, [["非組合員", "hikumi"], ["組合員", "kumi"]] %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :再雇用 %>
+  <%= f.select :Saikoyo, [["No", "false"], ["Yes", "true"]] %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :資格等級 %>
+  <%= f.collection_select :sikaku_id, Sikaku.all, :id, :shikakuname %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :役職名 %>
+  <%= f.collection_select :yakushoku_id, Yakushoku.all, :id, :yakushokuname %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :在籍状況 %>
+  <%= f.collection_select :status_id, Status.all, :id, :zaishoku %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :雇用区分 %>
+  <%= f.collection_select :koyou_id, Koyou.all, :id, :koyoukubun %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :所属組織 %>
+  <%= f.collection_select :organization_id, Organization.all, :id, :orgname %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :任命日 %>
+  <%= f.text_field :ninmei_date %>YYYY-MM-DD（半角）
+  </div>
+  <br>
+  <div class="actions">
+  <%= f.submit %>
+  </div>
+<% end %>
+<%= link_to "一覧画面にもどる", bases_path %>
+</div>
+</div>

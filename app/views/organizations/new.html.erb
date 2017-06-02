@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@org) do |f| %>
+  <% if @org.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @org.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @org.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :組織コード %>
+  <%= f.text_field :orgcode %>
+  <br>
+  <%= f.label :組織名 %>
+  <%= f.text_field :orgname %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<%= link_to "一覧画面にもどる", organizations_path %>

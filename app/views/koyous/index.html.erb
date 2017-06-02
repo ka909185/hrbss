@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+<p><%= notice %></p>
+<h1>雇用区分テーブル</h1>
+<%= link_to "新規登録", new_koyou_path, class: 'btn btn-default' %>
+
+<div class = "table-responsive">
+  <table class = "table table-hover">
+    <thead>
+      <tr>
+        <th>雇用区分</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @koyous.each do |t| %>
+      <tr>
+        <td><%= t.koyoukubun %></td>
+        <td><%= link_to "編集", edit_koyou_path(t.id) %></td>
+        <td><%= link_to '削除', koyou_path(t.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>

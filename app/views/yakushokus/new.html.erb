@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@yakushokus) do |f| %>
+  <% if @yakushokus.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @yakushokus.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @yakushokus.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :役職名 %>
+  <%= f.text_field :yakushokuname %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<%= link_to "一覧画面にもどる", yakushokus_path %>
