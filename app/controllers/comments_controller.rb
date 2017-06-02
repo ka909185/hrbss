@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @base = @comment.base
     respond_to do |format|
       if @comment.save
-        format.html{ redirect_to base_path(@base),notice 'コメントを投稿しました' }
+        format.html{ redirect_to base_path(@base) }
       else
         format.html{ render :new }
       end
