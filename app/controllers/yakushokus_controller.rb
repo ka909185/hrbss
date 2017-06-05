@@ -10,7 +10,7 @@ class YakushokusController < ApplicationController
   def create
     @yakushokus = Yakushoku.new(yakushokus_params)
     if @yakushokus.save
-      redirect_to yakushokus_path, notice: "組織情報を登録しました！"
+      redirect_to yakushokus_path, notice: "登録しました！"
     else
       render 'new'
     end
@@ -22,7 +22,7 @@ class YakushokusController < ApplicationController
   def update
     @yakushokus = Yakushoku.find(params[:id])
     if @yakushokus.update(yakushokus_params)
-      redirect_to yakushokus_path, notice: "組織情報を編集しました！"
+      redirect_to yakushokus_path, notice: "編集しました！"
     else
       render 'edit'
     end
@@ -30,7 +30,7 @@ class YakushokusController < ApplicationController
   def destroy
     @yakushokus = Yakushoku.find(params[:id])
     @yakushokus.destroy
-    redirect_to yakushokus_path, notice: "組織情報を削除しました！"
+    redirect_to yakushokus_path, notice: "削除しました！"
   end
   private
     def yakushokus_params

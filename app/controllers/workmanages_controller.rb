@@ -31,6 +31,9 @@ class WorkmanagesController < ApplicationController
   end
 
   def destroy
+    @workmanage = Workmanage.find(params[:id])
+    @workmanage.destroy
+    redirect_to workmanages_path, notice: "削除しました！"
   end
 
   private

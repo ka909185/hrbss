@@ -86,10 +86,12 @@
     <td></td>
   </tr>
 </table>
-<p>変更履歴一覧</p>
-<div id="comments_area">
 
+<H4>-------変更履歴-------------------------------------------------------------------------------------</H4>
+<div id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments, base: @base } %>
 </div>
+  <%= render partial: 'comments/form', locals: { comment: @comment, base: @base } %>
 
 </div>
 </div>

@@ -37,6 +37,8 @@ class BasesController < ApplicationController
   def show
     @base = Base.find(params[:id])
     @workmanage = Workmanage.find_by(emp_id:@base)
+    @comment = @base.comments.build
+    @comments = @base.comments
   end
   private
     def bases_params
