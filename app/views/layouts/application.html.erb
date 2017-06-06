@@ -21,12 +21,18 @@
         </ul>
       </li>
       <li><%= link_to "社員一覧", bases_path %></li>
-      <li><%= link_to "上長部下紐付け", workmanages_path %></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">服務管理 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "上長部下紐付け", workmanages_path %></li>
+          <li><%= link_to "代理承認者設定", dmanagers_path %></li>
+        </ul>
+      </li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">データ出力 <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><%= link_to "本承認者取込フォーマットcsv出力", workmanages_path(format: :csv) %></li>
-          <li><%= link_to "代理権限者取込フォーマットcsv出力", bases_path %></li>
+          <li><%= link_to "代理権限者取込フォーマットcsv出力", dmanagers_path(format: :csv) %></li>
         </ul>
       </li>
       <li><%= link_to "通勤費管理", bases_path %></li>

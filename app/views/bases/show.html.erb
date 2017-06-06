@@ -74,10 +74,10 @@
     <td><%= @workmanage.start_date.strftime("%Y/%m/%d") %></td>
   </tr>
   <tr>
-    <th>代行承認者</th>
-    <td></td>
+    <th>代理承認者</th>
+    <td><%= @dmanager.maneger.name %></td>
     <th>基準日</th>
-    <td></td>
+    <td><%= @dmanager.start_date.strftime("%Y/%m/%d") %></td>
   </tr>
   <tr>
     <th>管理対象メンバ</th>

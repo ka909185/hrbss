@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602055728) do
+ActiveRecord::Schema.define(version: 20170606001303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,18 @@ ActiveRecord::Schema.define(version: 20170602055728) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "dmanagers", force: :cascade do |t|
+    t.integer  "emp_id"
+    t.integer  "maneger_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.date     "start_date", default: '2017-12-31'
+  end
+
+  add_index "dmanagers", ["emp_id", "maneger_id"], name: "index_dmanagers_on_emp_id_and_maneger_id", unique: true, using: :btree
+  add_index "dmanagers", ["emp_id"], name: "index_dmanagers_on_emp_id", using: :btree
+  add_index "dmanagers", ["maneger_id"], name: "index_dmanagers_on_maneger_id", using: :btree
 
   create_table "koyous", force: :cascade do |t|
     t.string   "koyoukubun"

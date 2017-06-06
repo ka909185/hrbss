@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <%= form_for(@dmanager) do |f| %>
+      <%= f.label :対象社員氏名 %>
+      <%= f.collection_select :emp_id, ApplicationController::Base.all, :id, :name %>
+      <br>
+      <%= f.label :代理承認者氏名 %>
+      <%= f.collection_select :maneger_id, ApplicationController::Base.all, :id, :name %>
+      <br>
+      <%= f.label :承認権限付与日 %>
+      <%= f.text_field :start_date %>YYYY-MM-DD（半角）
+      <br>
+      <%= f.submit "更新" %>
+    <% end %>
+    <%= link_to "一覧画面にもどる", dmanagers_path %>
+  </div>
+</div>

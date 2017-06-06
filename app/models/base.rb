@@ -10,6 +10,10 @@ class Base < ActiveRecord::Base
   has_many :reverse_workmanages, foreign_key: "manager_id", class_name: "Workmanage", dependent: :destroy
   has_many :manager_users, through: :workmanages, source: :maneger
   has_many :emp_users, through: :reverse_workmanages, source: :emp
+  has_many :dmanagers, foreign_key: "emp_id", dependent: :destroy
+  has_many :reverse_Dmanagers, foreign_key: "manager_id", class_name: "Dmanager", dependent: :destroy
+  has_many :manager_users, through: :dmanagers, source: :maneger
+  has_many :emp_users, through: :reverse_dmanagers, source: :emp
   has_many :comments, dependent: :destroy
   def self.search(search)
     if search
