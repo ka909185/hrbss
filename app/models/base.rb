@@ -23,6 +23,18 @@ class Base < ActiveRecord::Base
     end
   end
 
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      base = find_by(id: row["id"]) || new
+      base.attributes = row.to_hash.slice(*updatable_attributes)
+      base.save!
+    end
+  end
+
+  def self.updatable_attributes
+    ["employeecode", "name", "birthday", "sikaku_id", "koyou_id", "organization_id", "yakushoku_id", "status_id", "sex", "kumiai", "kanichi", "Saikoyo", "ninmei_date"]
+  end
+
   def age
     date_format = "%Y%m%d"
     (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000

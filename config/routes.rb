@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :bases do
     resources :comments
+    collection { post :import }
   end
   resources :organizations, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :statuses, only: [:index, :new, :create, :edit, :update, :destroy]

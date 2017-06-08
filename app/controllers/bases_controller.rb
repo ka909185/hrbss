@@ -41,6 +41,12 @@ class BasesController < ApplicationController
     @comment = @base.comments.build
     @comments = @base.comments
   end
+
+  def import
+    Base.import(params[:file])
+    redirect_to bases_path, notice: "一括登録しました！"
+  end
+
   private
     def bases_params
       params.require(:base).permit(:employeecode, :name, :birthday, :sikaku_id, :koyou_id, :organization_id, :yakushoku_id, :status_id, :sex, :kumiai, :kanichi, :Saikoyo, :ninmei_date)

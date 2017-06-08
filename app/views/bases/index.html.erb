@@ -26,5 +26,12 @@
           <% end %>
         </table>
       </div>
+      <br>
+      <%= form_tag import_bases_path, multipart: true do %>
+      <p>
+        <%= file_field_tag :file %>
+        <%= submit_tag "インポート" %>
+      </p>
+      <% end %>
   </div>
 </div>
