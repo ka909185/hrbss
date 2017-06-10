@@ -32,6 +32,10 @@ class OrganizationsController < ApplicationController
     @org.destroy
     redirect_to organizations_path, notice: "組織情報を削除しました！"
   end
+  def show
+    @org = Organization.find(params[:id])
+    @base = Base.where(organization_id:@org)
+  end
   private
     def organizations_params
       params.require(:organization).permit(:orgcode, :orgname)

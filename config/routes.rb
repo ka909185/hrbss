@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :comments
     collection { post :import }
   end
-  resources :organizations, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :organizations, only: [:index, :new, :create, :edit, :update, :destroy, :show]
   resources :statuses, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :koyous, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :sikakus, only: [:index, :new, :create, :edit, :update, :destroy]

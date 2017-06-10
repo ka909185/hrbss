@@ -2,9 +2,14 @@
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     <p><%= notice %></p>
     <h2>社員一覧</h2>
-      <%= link_to "新規登録", new_basis_path, class: 'btn btn-default' %>
-      <br><br>
-
+      <%= link_to "新規個別登録", new_basis_path, class: 'btn btn-default' %>
+      <br>
+      <br>
+      <%= form_tag import_bases_path, multipart: true do %>
+        <%= file_field_tag :file %>一括登録
+        <%= submit_tag "インポート" %>
+      <% end %>
+      <br>
       <%= form_tag bases_path, :method => 'get' do %>
       <p>
         <%= text_field_tag :search, params[:search],class: "form-control", placeholder: "名前" %>
@@ -26,12 +31,5 @@
           <% end %>
         </table>
       </div>
-      <br>
-      <%= form_tag import_bases_path, multipart: true do %>
-      <p>
-        <%= file_field_tag :file %>
-        <%= submit_tag "インポート" %>
-      </p>
-      <% end %>
   </div>
 </div>

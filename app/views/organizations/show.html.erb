@@ -1,0 +1,36 @@
+
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <H2><%= @org.orgname %></H2>
+    <table class = "table table-hover" border="3">
+      <tr>
+        <thead>
+          <tr>
+            <th scope="cols">組織長</th>
+            <th scope="cols">担当部長</th>
+            <th scope="cols">担当課長</th>
+            <th scope="cols">主査</th>
+            <th scope="cols">一般社員</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <% @base.each do |a| %>
+                <% if a.yakushoku_id == 10 then%>
+                ほげほげ
+                <% else %>
+                ちょろちょろ
+              　<% end %>
+              <% end %>
+            </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+          </tr>
+        </tbody>
+      </tr>
+    </table>
+  </div>
+</div>

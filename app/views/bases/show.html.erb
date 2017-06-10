@@ -81,9 +81,15 @@
   </tr>
   <tr>
     <th>管理対象メンバ</th>
-    <td></td>
-    <th>基準日</th>
-    <td></td>
+    <td>
+      <% @buka.each do |a| %>
+        <%= a.emp.name %>,
+      <% end %>
+    </td>
+    <th>管理対象人数</th>
+    <td>
+      <%= @buka.count %>
+    </td>
   </tr>
 </table>
 
