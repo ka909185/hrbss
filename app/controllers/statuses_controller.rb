@@ -32,6 +32,10 @@ class StatusesController < ApplicationController
     @statuses.destroy
     redirect_to statuses_path, notice: "組織情報を削除しました！"
   end
+  def import
+    Status.import(params[:file])
+    redirect_to statuses_path, notice: "一括登録しました！"
+  end
   private
     def statuses_params
       params.require(:status).permit(:zaishoku)

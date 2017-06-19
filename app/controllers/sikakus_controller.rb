@@ -32,6 +32,10 @@ class SikakusController < ApplicationController
     @sikakus.destroy
     redirect_to sikakus_path, notice: "組織情報を削除しました！"
   end
+  def import
+    Sikaku.import(params[:file])
+    redirect_to sikakus_path, notice: "一括登録しました！"
+  end
   private
     def sikakus_params
       params.require(:sikaku).permit(:shikakuname)

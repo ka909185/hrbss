@@ -32,6 +32,10 @@ class YakushokusController < ApplicationController
     @yakushokus.destroy
     redirect_to yakushokus_path, notice: "削除しました！"
   end
+  def import
+    Yakushoku.import(params[:file])
+    redirect_to yakushokus_path, notice: "一括登録しました！"
+  end
   private
     def yakushokus_params
       params.require(:yakushoku).permit(:yakushokuname)

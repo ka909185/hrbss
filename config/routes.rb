@@ -4,11 +4,21 @@ Rails.application.routes.draw do
     resources :comments
     collection { post :import }
   end
-  resources :organizations, only: [:index, :new, :create, :edit, :update, :destroy, :show]
-  resources :statuses, only: [:index, :new, :create, :edit, :update, :destroy]
-  resources :koyous, only: [:index, :new, :create, :edit, :update, :destroy]
-  resources :sikakus, only: [:index, :new, :create, :edit, :update, :destroy]
-  resources :yakushokus, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :organizations do
+    collection { post :import }
+  end
+  resources :statuses do
+    collection { post :import }
+  end
+  resources :koyous do
+    collection { post :import }
+  end
+  resources :sikakus do
+    collection { post :import }
+  end
+  resources :yakushokus do
+    collection { post :import }
+  end
   resources :workmanages, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :dmanagers, only: [:index, :new, :create, :edit, :update, :destroy]
   root 'top#index'

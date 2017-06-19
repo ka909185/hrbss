@@ -32,6 +32,10 @@ class KoyousController < ApplicationController
     @koyous.destroy
     redirect_to koyous_path, notice: "組織情報を削除しました！"
   end
+  def import
+    Koyou.import(params[:file])
+    redirect_to koyous_path, notice: "一括登録しました！"
+  end
   private
     def koyous_params
       params.require(:koyou).permit(:koyoukubun)

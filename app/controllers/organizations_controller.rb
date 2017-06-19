@@ -36,6 +36,10 @@ class OrganizationsController < ApplicationController
     @org = Organization.find(params[:id])
     @base = Base.where(organization_id:@org)
   end
+  def import
+    Organization.import(params[:file])
+    redirect_to organizations_path, notice: "一括登録しました！"
+  end
   private
     def organizations_params
       params.require(:organization).permit(:orgcode, :orgname)
